@@ -3,7 +3,17 @@
         <meta charset="utf-8">
         <title>Task 2</title>
         <style type="text/css">
-
+            form{
+                border:1px solid rgb(146, 145, 145);
+                width: 330px;
+                padding: 15px 10px;
+            }
+            #horse_position{
+                width:320px;
+            }
+            label{
+                font-weight: bold;
+            }
         </style>
         <script>
             function moves(){
@@ -13,36 +23,36 @@
                 var k=+position[1];//номер горизонтали позиции
                 var arrMoves=[]; //массив с вариантами ходов
                 //проверка положения коня на доске и формирование списка ходов
+                if (k>2){
+                    if (i>0){
+                        arrMoves.push(arrChr[i-1]+(k-2));
+                    }
+                    if (i<7){
+                        arrMoves.push(arrChr[i+1]+(k-2));
+                    }
+                }
                 if (k>1){
                     if (i>1){
-                        arrMoves.push(arrChr[i-2],k-1);
+                        arrMoves.push(arrChr[i-2]+(k-1));
                     }
                     if (i<6){
-                        arrMoves.push(arrChr[i+2],k-1);
+                        arrMoves.push(arrChr[i+2]+(k-1));
                     }
                 }  
                 if (k<8){
                     if (i<6){
-                        arrMoves.push(arrChr[i+2],k+1);
+                        arrMoves.push(arrChr[i+2]+(k+1));
                     }
                     if (i>1){
-                        arrMoves.push(arrChr[i-2],k+1);
-                    }
-                }
-                if (k>2){
-                    if (i>0){
-                        arrMoves.push(arrChr[i-1],k-2);
-                    }
-                    if (i<7){
-                        arrMoves.push(arrChr[i+1],k-2);
+                        arrMoves.push(arrChr[i-2]+(k+1));
                     }
                 }
                 if (k<7){
                     if (i<7){
-                        arrMoves.push(arrChr[i+1],k+2);
+                        arrMoves.push(arrChr[i+1]+(k+2));
                     }
                     if (i>0){
-                        arrMoves.push(arrChr[i-1],k+2);
+                        arrMoves.push(arrChr[i-1]+(k+2));
                     }
                 }
                 //конец проверки положения коня на доске
@@ -52,6 +62,13 @@
         </script>
     </head>
     <body>
-
+        <form>
+            <label for="horse_position">Исходное положение:</label> 
+            <br>
+            <input id="horse_position" type="text" name="horse_position" value="D4">
+            <br>
+            <br>
+            <input type="submit" value="Ок" onclick="alert('Возможные варианты хода:\n\n' + moves())">
+        </form>
     </body>
 </html>
