@@ -6,7 +6,49 @@
 
         </style>
         <script>
-            
+            function moves(){
+                var arrChr=["A","B","C","D","E","F","G","H"]; //массив обозначение вертикалей доски
+                var position=document.getElementById('horse_position').value; //получаем введеное положение коня на доске
+                var i=arrChr.indexOf(position[0]); //номер вертикали позиции
+                var k=+position[1];//номер горизонтали позиции
+                var arrMoves=[]; //массив с вариантами ходов
+                //проверка положения коня на доске и формирование списка ходов
+                if (k>1){
+                    if (i>1){
+                        arrMoves.push(arrChr[i-2],k-1);
+                    }
+                    if (i<6){
+                        arrMoves.push(arrChr[i+2],k-1);
+                    }
+                }  
+                if (k<8){
+                    if (i<6){
+                        arrMoves.push(arrChr[i+2],k+1);
+                    }
+                    if (i>1){
+                        arrMoves.push(arrChr[i-2],k+1);
+                    }
+                }
+                if (k>2){
+                    if (i>0){
+                        arrMoves.push(arrChr[i-1],k-2);
+                    }
+                    if (i<7){
+                        arrMoves.push(arrChr[i+1],k-2);
+                    }
+                }
+                if (k<7){
+                    if (i<7){
+                        arrMoves.push(arrChr[i+1],k+2);
+                    }
+                    if (i>0){
+                        arrMoves.push(arrChr[i-1],k+2);
+                    }
+                }
+                //конец проверки положения коня на доске
+
+                return (arrMoves); //возврат списка ходов 
+            }
         </script>
     </head>
     <body>
